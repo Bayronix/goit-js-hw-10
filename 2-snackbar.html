@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page 3</title>
     
-    <link rel="stylesheet" href="/goit-js-hw-10/assets/1-timer-e3b0c442.css">
+    <script type="module" crossorigin src="/goit-js-hw-10/commonHelpers2.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-3cfb730f.js">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-77e16229.js">
+    <link rel="stylesheet" href="/goit-js-hw-10/assets/vendor-7a007824.css">
+    <link rel="stylesheet" href="/goit-js-hw-10/assets/2-snackbar-e3b0c442.css">
   </head>
 
   <body>
@@ -16,7 +20,7 @@
       <form class="form">
         <label>
           Delay (ms)
-          <input type="number" name="delay" required />
+          <input class="input-class" type="number" name="delay" required />
         </label>
 
         <fieldset>
@@ -46,5 +50,6 @@
         <button type="submit">Create notification</button>
       </form>
     </section>
+    
   </body>
 </html>
