@@ -5,13 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page 2</title>
-    <link href="./css/1-timer.css" />
+    <link rel="stylesheet" href="./css/1-timer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
   </head>
   <body>
     <section>
       <a href="./index.html">Go to home</a>
       <h1>Welcome to page 2</h1>
-      <input type="text" id="datetime-picker" />
+      <input
+        type="datetime-local"
+        id="datetime-picker"
+        placeholder="Select Datetime"
+      />
       <button class="button-timer-class" type="button" data-start>Start</button>
 
       <div class="timer">
@@ -33,5 +41,8 @@
         </div>
       </div>
     </section>
+    <script type="module" src="./js/1-timer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://unpkg.com/izitoast"></script>
   </body>
 </html>
