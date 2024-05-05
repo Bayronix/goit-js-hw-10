@@ -1,4 +1,6 @@
 .button-timer-class {
+  min-width: 40px;
+  background-color: red;
 }
 .timer {
   display: flex;
