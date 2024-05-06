@@ -39,10 +39,10 @@ refs.form.addEventListener('submit', event => {
 
   promise
     .then(delay =>
-      showNotification('success', `✅ Fulfilled promise in ${delay}ms`, delay)
+      showNotification('success', `✅ Fulfilled promise in ${delay}ms`)
     )
     .catch(delay =>
-      showNotification('error', `❌ Rejected promise in ${delay}ms`, delay)
+      showNotification('error', `❌ Rejected promise in ${delay}ms`)
     );
 });
 
