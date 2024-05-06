@@ -9,5 +9,9 @@
 
 .class-button {
   min-height: 40px;
-  background-color: red;
+}
+
+.is-disable {
+  pointer-events: none;
+  opacity: 0.5;
 }

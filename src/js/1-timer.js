@@ -33,8 +33,8 @@ const ErrorModule = () => {
 };
 
 const enableButtonAndPicker = () => {
-  refs.buttonStart.classList.remove('is-disable');
-  refs.datePicker.disabled = false;
+  refs.buttonStart.classList.add('is-disable');
+  refs.datePicker.disabled = true;
 };
 
 const updateTimerUI = () => {
@@ -43,7 +43,7 @@ const updateTimerUI = () => {
 };
 
 const startTimer = () => {
-  refs.buttonStart.classList.add('is-disable');
+  refs.buttonStart.disabled = true;
 
   if (intervalID) {
     clearInterval(intervalID);
@@ -117,6 +117,11 @@ flatpickr(refs.datePicker, {
       updateTimerUI();
     }
   },
+});
+refs.buttonStart.disabled = true;
+
+refs.datePicker.addEventListener('change', () => {
+  refs.buttonStart.disabled = false;
 });
 
 refs.buttonStart.addEventListener('click', startTimer);

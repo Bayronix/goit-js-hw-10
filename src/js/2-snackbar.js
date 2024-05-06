@@ -16,28 +16,30 @@ iziToast.settings({
   close: false,
 });
 
-refs.form.addEventListener('submit', onSubmit);
+function getDelayValue() {
+  return refs.inputDelay.value;
+}
 
-async function onSubmit(event) {
+refs.form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const delay = parseInt(refs.inputDelay.value);
+  const delay = getDelayValue();
   const stateValue = getStateValue();
 
-  try {
-    if (stateValue === 'fulfilled') {
-      await delayFunction(delay);
-      showNotification('success', `✅ Fulfilled promise in ${delay}ms`);
-    } else if (stateValue === 'rejected') {
-      await delayFunction(delay);
-      throw new Error(`❌ Rejected promise in ${delay}ms`);
-    }
-  } catch (error) {
-    showNotification('error', error.message);
-  } finally {
-    refs.form.reset();
-  }
-}
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (stateValue === 'fulfilled') {
+        resolve(`✅ Fulfilled promise in ${delay}ms`);
+      } else if (stateValue === 'rejected') {
+        reject(`❌ Rejected promise in ${delay}ms`);
+      }
+    }, delay);
+  });
+
+  promise
+    .then(message => showNotification('success', message))
+    .catch(message => showNotification('error', message));
+});
 
 function getStateValue() {
   for (const input of refs.inputsState) {
@@ -45,10 +47,7 @@ function getStateValue() {
       return input.value;
     }
   }
-}
-
-function delayFunction(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return 'none';
 }
 
 function showNotification(type, message) {
