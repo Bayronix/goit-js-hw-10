@@ -29,16 +29,21 @@ refs.form.addEventListener('submit', event => {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (stateValue === 'fulfilled') {
-        resolve(`✅ Fulfilled promise in ${delay}ms`);
+        resolve(delay);
       } else if (stateValue === 'rejected') {
-        reject(`❌ Rejected promise in ${delay}ms`);
+        reject(delay);
       }
     }, delay);
+    refs.inputDelay.value = '';
   });
 
   promise
-    .then(message => showNotification('success', message))
-    .catch(message => showNotification('error', message));
+    .then(delay =>
+      showNotification('success', `✅ Fulfilled promise in ${delay}ms`, delay)
+    )
+    .catch(delay =>
+      showNotification('error', `❌ Rejected promise in ${delay}ms`, delay)
+    );
 });
 
 function getStateValue() {

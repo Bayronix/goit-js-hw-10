@@ -32,11 +32,6 @@ const ErrorModule = () => {
   });
 };
 
-const enableButtonAndPicker = () => {
-  refs.buttonStart.classList.add('is-disable');
-  refs.datePicker.disabled = true;
-};
-
 const updateTimerUI = () => {
   const currentTimeData = convertMs(refs.userSelectedDate - Date.now());
   updateUi(currentTimeData);
@@ -112,17 +107,13 @@ flatpickr(refs.datePicker, {
     if (selectedByUserToNumber < currentTime) {
       ErrorModule();
     } else {
-      enableButtonAndPicker();
+      refs.buttonStart.disabled = false;
       refs.userSelectedDate = selectedByUserToNumber;
       updateTimerUI();
     }
   },
 });
 refs.buttonStart.disabled = true;
-
-refs.datePicker.addEventListener('change', () => {
-  refs.buttonStart.disabled = false;
-});
 
 refs.buttonStart.addEventListener('click', startTimer);
 
