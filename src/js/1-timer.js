@@ -109,7 +109,6 @@ flatpickr(refs.datePicker, {
     } else {
       refs.buttonStart.disabled = false;
       refs.userSelectedDate = selectedByUserToNumber;
-      updateTimerUI();
     }
   },
 });
